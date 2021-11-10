@@ -8,3 +8,10 @@
   + timestamp
   + record: Reminiscent of a row in a database.
   + recordholder: 
+# House many colors are there?
+  + Red
+  + Yellow
+  + Green
+  + Blue
+  + Pink
+  + Purple
