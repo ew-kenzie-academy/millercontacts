@@ -1,0 +1,147 @@
+:root {
+  --blue: #1e90ff;
+  --white: #ffffff;
+}
+
+body {
+  text-align:   center;
+  font-family:  Yu Gothic UI Semibold;
+  font-size:    8pt;
+  position:     absolute;
+  left:         50%;
+  width:        780px;
+  margin-left:  -390px;
+  color:        rgb(253, 253, 5) ;
+  /**/
+  display:      flex;
+  align-items:  center;
+}
+
+#card {
+  width:          380px;
+  /* height:         300px; */
+  margin:         5px auto;
+  margin-left:    auto;
+  padding:        10px 0px;
+  background:     rgb(0, 0, 0) none repeat scroll 0% 0%;
+  border-style:   solid;
+  border-width:   .5px;
+  border-color:   var(--blue);
+  border-radius:  8px;
+  /**/   
+  display:        flex   ;
+  flex-direction: column ;
+  align-items:    center ;
+}
+
+.record-stack {
+  border-style:   solid;
+  border-width:   1.5px;
+  border-color:   rgb(63, 72, 204);
+  border-radius:  8px;
+  width:          35em;
+  /**/
+  display:        flex;
+  flex-direction: column;
+  align-items:    center;
+}
+.record {
+  border-style:   dashed;
+  border-width:   1px;
+  border-color:   purple;
+  width:100%;
+}
+.anterior{
+  border-style:   dotted;
+  border-width:   0.5px;
+  border-color:   yellow;
+  /**/
+  display:          flex;
+  justify-content:  space-between;
+}
+.paunch{
+  /**/
+  display:  flex;
+  justify-content:  space-between;
+}
+.field-stack{
+  width: 50%;
+}
+.field.fixed{
+  color:          red;
+  /**/
+  display:flex;
+}
+.field.scroll,.field.wrap{
+   color:          white;
+  /**/
+  display:flex; 
+}
+.field.timestamp{
+  color:          cyan;
+  /**/
+  display:flex;
+  flex-direction:row-reverse;
+}
+.posterior{
+  border-style:   dotted;
+  border-width:   1.5px;
+  border-color:   purple;
+  width:1em;
+}
+.icon{
+  color:red;
+}
+/* 
+#title{
+    display:        flex;
+}
+#title .major{
+    font-size:   22pt;
+}
+#title .minor{
+    margin-top:   2em ;
+    margin-left:  2em ;
+    font-size:    3pt ;
+}
+#category.minor{
+    margin-top:      .5em   ;
+    margin-bottom:    1em   ;
+    font-size:        9pt   ;
+}
+#category.major{
+    font-size:        12pt  ;
+    margin-top:      -.3em  ;
+    margin-bottom:     1em  ;
+}
+#question.major{
+    font-size:       8pt   ;
+    margin-top:     .5em   ;
+    margin-bottom:   1em   ;
+    margin-left:     6em   ;
+    margin-right:    6em   ;
+    color:           rgb(239, 227, 177) ;
+    height:          3.6em;
+}
+#question.minor{
+    margin-bottom:   .4em;
+}
+#response{
+    display:        flex   ;
+    align-items:    center ;
+}
+#response .major{
+    /* https://www.w3docs.com/snippets/css/how-to-disable-the-resizing-of-the-textarea-element.html *//*
+    height:1.5em;
+    resize:none;
+}
+#response .minor{
+    margin-left:    .5em ;
+}
+#submit{
+   margin-top:     .75em ;
+}
+#score{
+    margin-top:    .15em ;
+    font-size:      20pt ;
+} */
