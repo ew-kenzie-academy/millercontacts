@@ -75,7 +75,7 @@ body {
 .field.scroll,.field.wrap{
    color:          white;
   /**/
-  display:flex; 
+  display:flex;
 }
 /*.field.scroll,.field.wrap */ .words{
    /* color:          orange; */
@@ -87,6 +87,10 @@ body {
   border-bottom-color: #d00;
   border-bottom-style: solid;
   border-bottom-width: 1px;
+  overflow:       hidden;
+}
+.field.wrap .words{
+  /* overflow:word-wrap; */
 }
 .field.timestamp{
   color:          cyan;
