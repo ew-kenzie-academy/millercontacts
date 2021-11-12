@@ -22,7 +22,7 @@ body {
   /* height:         300px; */
   margin:         5px auto;
   margin-left:    auto;
-  padding:        10px 0px;
+  padding:        .6em;
   background:     rgb(0, 0, 0) none repeat scroll 0% 0%;
   border-style:   solid;
   border-width:   .5px;
@@ -77,6 +77,17 @@ body {
   /**/
   display:flex; 
 }
+/*.field.scroll,.field.wrap */ .words{
+   /* color:          orange; */
+   width:          100%;
+   text-align:     left;
+}
+.field.scroll .words{
+  color:               orange;
+  border-bottom-color: #d00;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+}
 .field.timestamp{
   color:          cyan;
   /**/
@@ -88,9 +99,12 @@ body {
   border-width:   1.5px;
   border-color:   purple;
   width:1em;
+  height:1em;
+  font-size:      12pt;
 }
 .icon{
-  color:red;
+  color:    red;
+  width:    1.5em;
 }
 /* 
 #title{
