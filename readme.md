@@ -8,6 +8,9 @@
   + timestamp
   + record: Reminiscent of a row in a database.
   + recordholder: 
+  + pile
+  + stack
+  + 
 # House many colors are there?
   + Red
   + Yellow
