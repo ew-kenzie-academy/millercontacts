@@ -83,7 +83,7 @@ body {
    text-align:     left;
 }
 .field.scroll .words{
-  color:               orange;
+  /* color:               orange; */
   border-bottom-color: #d00;
   border-bottom-style: solid;
   border-bottom-width: 1px;
