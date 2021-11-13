@@ -6,7 +6,9 @@
 
 function script(){alert(1)}
 
-list=document.querySelectorAll(".field.scroll .words")
-lambda=list[0]
+list=document.querySelectorAll(".field.scroll .words");
+lambda=list[0];
 
-lambda.onblur=script
+lambda.onfocus=script;
+
+lambda.onblur=script;
