@@ -38,7 +38,7 @@ body {
   border-style:   solid;
   border-width:   1.5px;
   border-color:   rgb(63, 72, 204);
-  border-radius:  8px;
+  border-radius:  3px;
   width:          35em;
   /**/
   display:        flex;
@@ -77,17 +77,18 @@ body {
   /**/
   display:flex;
 }
-/*.field.scroll,.field.wrap */ .words{
+.words{
    /* color:          orange; */
-   width:          100%;
+   width:          95%;
    text-align:     left;
 }
 .field.scroll .words{
   /* color:               orange; */
+  height:              1.33em;
   border-bottom-color: #d00;
   border-bottom-style: solid;
   border-bottom-width: 1px;
-  overflow:       hidden;
+  overflow:            hidden;
 }
 .field.wrap .words{
   /* overflow:word-wrap; */
@@ -110,56 +111,7 @@ body {
   color:    red;
   width:    1.5em;
 }
-/* 
-#title{
-    display:        flex;
+.idol{
+  color:    green;
+  width:    1.5em;
 }
-#title .major{
-    font-size:   22pt;
-}
-#title .minor{
-    margin-top:   2em ;
-    margin-left:  2em ;
-    font-size:    3pt ;
-}
-#category.minor{
-    margin-top:      .5em   ;
-    margin-bottom:    1em   ;
-    font-size:        9pt   ;
-}
-#category.major{
-    font-size:        12pt  ;
-    margin-top:      -.3em  ;
-    margin-bottom:     1em  ;
-}
-#question.major{
-    font-size:       8pt   ;
-    margin-top:     .5em   ;
-    margin-bottom:   1em   ;
-    margin-left:     6em   ;
-    margin-right:    6em   ;
-    color:           rgb(239, 227, 177) ;
-    height:          3.6em;
-}
-#question.minor{
-    margin-bottom:   .4em;
-}
-#response{
-    display:        flex   ;
-    align-items:    center ;
-}
-#response .major{
-    /* https://www.w3docs.com/snippets/css/how-to-disable-the-resizing-of-the-textarea-element.html *//*
-    height:1.5em;
-    resize:none;
-}
-#response .minor{
-    margin-left:    .5em ;
-}
-#submit{
-   margin-top:     .75em ;
-}
-#score{
-    margin-top:    .15em ;
-    font-size:      20pt ;
-} */
