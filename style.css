@@ -1,6 +1,7 @@
 :root {
-  --blue: #1e90ff;
-  --white: #ffffff;
+  --blue                   :   #1e90ff ;
+  --white                  :   #ffffff ;
+  --_DESIGN_BOUNDARY_WIDTH_0  :   .0px     ;
 }
 
 body {
@@ -19,12 +20,11 @@ body {
 
 #card {
   width:          380px;
-  /* height:         300px; */
   margin:         5px auto;
   margin-left:    auto;
   padding:        .6em;
   background:     rgb(0, 0, 0) none repeat scroll 0% 0%;
-  border-style:   solid;
+  border-style:   none;
   border-width:   .5px;
   border-color:   var(--blue);
   border-radius:  8px;
@@ -35,83 +35,91 @@ body {
 }
 
 .record-stack {
-  border-style:   solid;
-  border-width:   1.5px;
+  /*design*/
+  border-style:   double;
+  border-width:   var(--_DESIGN_BOUNDARY_WIDTH_0);
   border-color:   rgb(63, 72, 204);
-  border-radius:  3px;
+  border-radius:  2px;
+  /**/
   width:          35em;
   /**/
   display:        flex;
   flex-direction: column;
   align-items:    center;
 }
-.record {
-  border-style:   dashed;
-  border-width:   1px;
-  border-color:   purple;
-  width:100%;
+.record{
+  /*design*/
+  border-style:   dashed    ;
+  border-width:   var(--_DESIGN_BOUNDARY_WIDTH_0);
+  border-color:   purple    ;
+  /**/
+  width:          100%      ;
 }
 .anterior{
-  border-style:   dotted;
-  border-width:   0.5px;
-  border-color:   yellow;
+  /*design*/
+  border-style:   dotted  ;
+  border-width:   var(--_DESIGN_BOUNDARY_WIDTH_0);
+  border-color:   yellow  ;
   /**/
-  display:          flex;
-  justify-content:  space-between;
+  display         :  flex;
+  justify-content :  space-between;
 }
 .paunch{
   /**/
-  display:  flex;
-  justify-content:  space-between;
+  display         :  flex;
+  justify-content :  space-between;
 }
 .field-stack{
   width: 50%;
 }
 .field.fixed{
-  color:          red;
+  color:          red  ;
   /**/
-  display:flex;
+  display:        flex ;
 }
 .field.scroll,.field.wrap{
-   color:          white;
+   color     :    white;
   /**/
-  display:flex;
+  display    :    flex;
 }
 .words{
-   /* color:          orange; */
-   width:          95%;
-   text-align:     left;
+   width       :     95%  ;
+   text-align  :     left ;
 }
 .field.scroll .words{
-  /* color:               orange; */
-  height:              1.33em;
-  border-bottom-color: #d00;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  overflow:            hidden;
+  height              :  1.33em ;
+  border-bottom-color :  #d00   ;
+  border-bottom-style :  solid  ;
+  border-bottom-width :  .2px    ;
+  overflow            :  hidden ;
 }
 .field.wrap .words{
   /* overflow:word-wrap; */
 }
 .field.timestamp{
-  color:          cyan;
+  color           : cyan        ;
   /**/
-  display:flex;
-  flex-direction:row-reverse;
+  display         : flex        ;
+  flex-direction  : row-reverse ;
+}
+.field.timestamp .words{
+  font-style     :          italic ;
 }
 .posterior{
-  border-style:   dotted;
-  border-width:   1.5px;
-  border-color:   purple;
-  width:1em;
-  height:1em;
-  font-size:      12pt;
+  /*design*/
+  border-style :   dotted;
+  border-width :   var(--_DESIGN_BOUNDARY_WIDTH_0);
+  border-color :   purple;
+  /**/
+  width        :     1em  ;
+  height       :     1em  ;
+  font-size    :     12pt ;
 }
 .icon{
-  color:    red;
-  width:    1.5em;
+  color:    red   ;
+  width:    1.5em ;
 }
 .idol{
-  color:    green;
-  width:    1.5em;
+  color:    green ;
+  width:    1.5em ;
 }
