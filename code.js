@@ -130,6 +130,11 @@ redlog("sync","Hello App");
     let twords = parent.querySelector(".timestamp .words") ;
     if(! words.__instate )
       words.__instate=[words.textContent,twords.textContent]   ;
+    /* else{
+      if(words.textContent===words.__instate[0]){
+        words.__instate=undefined;
+      }
+    } */
     redlog("wordsenter","done: " + words.instate)            ;
   }
   
@@ -151,7 +156,7 @@ redlog("sync","Hello App");
     }
   } ;
  
-  document.querySelectorAll(".field.scroll .words").forEach(lambda => {
+  document.querySelectorAll(".field.scroll, field.wrap, .words").forEach(lambda => {
     lambda.onfocus     = wordsenter;
     lambda.onblur      = wordsexit;
   });
@@ -174,5 +179,5 @@ redlog("sync","Hello App");
     // glob=parent;
     parent.remove(parent);
   };
-  document.querySelectorAll(".timestamp .icon").forEach(lambda => lambda.onclick=deleteonclick )
+  document.querySelectorAll(".timestamp .icon").forEach(lambda => lambda.onclick=deleteonclick );;
 }/*eventsandbox*/
