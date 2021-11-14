@@ -66,17 +66,16 @@ function newfield(symbol){
     + `</div><!-- field scroll -->`)
 }
 
-function appendBlankRecord(appID){
-  // lambda=document.createElement(`div`);
-  {
-   "name"    :0
-  ,"phone"   :1
-  ,"email"   :2
-  ,"address" :3
-  ,"note"    :4
-  ,"group"   :5
-  
-  }
+function appendBlankRecord(stackID){
+  let [icon,label] = {
+     "name"    : ["♣",  "NAME"    ]
+    ,"phone"   : ["☎", "PHONE"   ]
+    ,"email"   : ["ⓔ",  "EMAIL"   ]
+    ,"address" : ["⌂",  "ADDRESS" ]
+    ,"note"    : ["λ",  "NOTE"    ]
+    ,"link"    : ["🔗", "LINK"    ]
+    ,"group"   : ["👪", "GROUP"   ]
+  }[stackID];
   lambda = htmltotag(``
     + `<div class="record">`
     +   `<div class="anterior">`
