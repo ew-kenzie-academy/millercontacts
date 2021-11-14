@@ -151,10 +151,10 @@ redlog("sync","Hello App");
     }
   } ;
  
-  list=document.querySelectorAll(".field.scroll .words");
-  lambda=list[0];	
-  lambda.onfocus     = wordsenter;
-  lambda.onblur      = wordsexit;
+  document.querySelectorAll(".field.scroll .words").forEach(lambda => {
+    lambda.onfocus     = wordsenter;
+    lambda.onblur      = wordsexit;
+  });
 }/*eventsandbox*/
 {/*eventsandbox*/
   const postonclick=function(e){
