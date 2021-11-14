@@ -126,6 +126,12 @@ body {
   color:    red   ;
   width:    1.5em ;
 }
+.timestamp .icon:hover{
+  color             : lightred  ;
+  background-color  : darkred   ;
+  text-decoration   : underline ;
+  cursor            : pointer ;
+}
 .idol{
   color:      green ;
   width:      1.5em ;

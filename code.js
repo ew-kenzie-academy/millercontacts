@@ -125,34 +125,35 @@ redlog("sync","Hello App");
   list=document.querySelectorAll(".field.scroll .words");
   lambda=list[0];	
   
-  const script_0 = function(e){
-    redlog("script_0","starting 0")        ;
+  const wordsenter = function(e){
+    redlog("wordsenter","starting 0")        ;
     let words  = e.target                  ;
     let parent = words.closest(".record")                  ;
     let twords = parent.querySelector(".timestamp .words") ;
-    words.__instate=[words.innerHTML,twords.innerHTML];
-    redlog("script_0","done: " + words.instate)        ;
+    if(! words.__instate )
+      words.__instate=[words.textContent,twords.textContent]   ;
+    redlog("wordsenter","done: " + words.instate)            ;
   }
-  lambda.onfocus     = script_0;
+  lambda.onfocus     = wordsenter;
   
-  const script_6 = function(e){
-    redlog("onblur::script_6","start");
+  const wordsexit = function(e){
+    redlog("onblur::wordsexit","start");
     let words  = e.target;
     let parent = words.closest(".record");
     let twords = parent.querySelector(".timestamp .words");
-    let curr   = words.innerHTML;
-    redlog("onblur::script_6","state: "+words.__instate);
+    let curr   = words.textContent;
+    redlog("onblur::wordsexit","current: "+words.__instate);
     if(curr === words.__instate[0]){
-      redlog("onblur::script_6",`the same: [${words.__instate}] is: [${curr}]`);
+      redlog("onblur::wordsexit",`the same: [${words.__instate}] is: [${curr}]`);
       words.__instate=undefined;
     }
     else{
-      redlog("onblur::script_6",`changed: [${words.__instate}] is: [${curr}]`);
+      redlog("onblur::wordsexit",`changed: [${words.__instate}] is: [${curr}]`);
       twords.innerHTML=contacttimestamp();
       parent.querySelector(".idol").style.visibility="visible";
     }
   } ;
-  lambda.onblur     = script_6;
+  lambda.onblur     = wordsexit;
   
 /*   script_3 = function(){ redlog("focusout::script_3","3") } ;
   function script_4(){   redlog("focusout::script_4","4") } ;
