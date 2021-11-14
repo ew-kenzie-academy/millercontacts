@@ -1,8 +1,9 @@
-/* :root {
+:root {
   --blue                   :   #1e90ff ;
   --white                  :   #ffffff ;
   --_DESIGN_BOUNDARY_WIDTH_0  :   .0px     ;
-} */
+  --_DESIGN_BOUNDARY_WIDTH_1  :   1.0px    ;
+}
 
 body {
   text-align:   center;
@@ -50,7 +51,7 @@ body {
 .record{
   /*design*/
   border-style:   dashed    ;
-  border-width:   0px /* LAMBDA */ ;
+  border-width:   var(--_DESIGN_BOUNDARY_WIDTH_1) ;
   border-color:   purple    ;
   /**/
   width          :  100%  ;

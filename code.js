@@ -45,8 +45,8 @@ contacttimestamp=function(){
 }
 
 function appendBlankRecord(appID){
-  lambda=document.createElement(`template`);
-/*   lambda.innerHTMl=``
+  lambda=document.createElement(`div`);
+  lambda.innerHTML=``
     + `<div class="record">`
     +   `<div class="anterior">`
     +       `<div class="field fixed">`
@@ -59,8 +59,10 @@ function appendBlankRecord(appID){
     +           `<div class="idol">⭯</div>`
     +       `</div><!-- field timestamp -->`
     +   `</div><!-- anterior -->`
-    + `</div><!-- "record" -->` */
-    lambda.textContent="<td>text</td>"
-    return lambda;
+    + `</div><!-- "record" -->`
+    // lambda.textContent="<td>text</td>"
+    return lambda.firstChild;
 }
+recordstack=document.getElementById("name")
+body=document.getElementsByTagName("body")[0]
 x=appendBlankRecord();
