@@ -125,13 +125,7 @@ redlog("sync","Hello App");
   list=document.querySelectorAll(".field.scroll .words");
   lambda=list[0];	
   
-  script_3 = function(){ redlog("focusout::script_3","3") } ;
-  function script_4(){   redlog("focusout::script_4","4") } ;
-  glob5=undefined;function script_5(e){   
-    redlog("focusout::script_5",""),100;
-    glob5=e;
-  };
-  script_0 = function(e){
+  const script_0 = function(e){
     redlog("script_0","starting 0")        ;
     let words  = e.target                  ;
     let parent = words.closest(".record")                  ;
@@ -140,8 +134,8 @@ redlog("sync","Hello App");
     redlog("script_0","done: " + words.instate)        ;
   }
   lambda.onfocus     = script_0;
-  glob6=undefined;lambda.onblur      = script_6    = function(e){
-    glob6=e;
+  
+  const script_6 = function(e){
     redlog("onblur::script_6","start");
     let words  = e.target;
     let parent = words.closest(".record");
@@ -155,24 +149,21 @@ redlog("sync","Hello App");
     else{
       redlog("onblur::script_6",`changed: [${words.__instate}] is: [${curr}]`);
       twords.innerHTML=contacttimestamp();
-      glob6=parent.querySelector(".idol");// .visibility="visible";
       parent.querySelector(".idol").style.visibility="visible";
     }
   } ;
+  lambda.onblur     = script_6;
+  
+/*   script_3 = function(){ redlog("focusout::script_3","3") } ;
+  function script_4(){   redlog("focusout::script_4","4") } ;
+  glob5=undefined;function script_5(e){   
+    redlog("focusout::script_5",""),100;
+    glob5=e;
+  };
   lambda.addEventListener( 'focusout' , script_3 );
   lambda.addEventListener( 'focusout' , script_4 );
   lambda.addEventListener( 'focusout' , script_4 );
-  lambda.addEventListener( 'focusout' , script_5 );
-}/*eventsandbox*/
-
-{/*eventsandbox*/
-/*   phonepost=document.querySelector("#phone .posterior");
-  phonepost.onclick=function(e){
-    redlog("phonepost.onclick","start");
-    let post   = e.target;
-    let parent = post.closest(".record-stack");
-    appendBlankRecord(parent.id);
-  }; */
+  lambda.addEventListener( 'focusout' , script_5 ); */
 }/*eventsandbox*/
 {/*eventsandbox*/
   const postonclick=function(e){
