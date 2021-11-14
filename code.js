@@ -41,8 +41,42 @@ function htmltotag(html){
   return lambda.firstChild;
 }
 
+function newrecord(symbol){
+  return htmltotag(``
+    + `<div class="record">`
+    +   `<div class="anterior">`
+    +       `<div class="field fixed">`
+    +           `<div class="icon">♣</div>`
+    +           `<div class="words">NAME</div>`
+    +       `</div><!-- field fixed -->`
+    +       `<div class="field timestamp">`
+    +           `<div class="icon">X</div>`
+    +           `<div class="words">[2021-11-08 23:30 MST]</div>`
+    +           `<div class="idol">⭯</div>`
+    +       `</div><!-- field timestamp -->`
+    +   `</div><!-- anterior -->`
+    + `</div><!-- "record" -->`
+  )
+}
+function newfield(symbol){
+  return htmltotag(``
+    + `<div class="field scroll">`
+    +   `<div class="icon">${symbol}</div>`
+    +   `<div class="words" contenteditable="true"></div>`
+    + `</div><!-- field scroll -->`)
+}
+
 function appendBlankRecord(appID){
   // lambda=document.createElement(`div`);
+  {
+   "name"    :0
+  ,"phone"   :1
+  ,"email"   :2
+  ,"address" :3
+  ,"note"    :4
+  ,"group"   :5
+  
+  }
   lambda = htmltotag(``
     + `<div class="record">`
     +   `<div class="anterior">`
@@ -63,15 +97,20 @@ function appendBlankRecord(appID){
     return lambda;
 }
 
-list=document.querySelectorAll(".field.scroll .words");
-lambda=list[0];	
-  
-lambda.onfocus     = script_0    = function(){ setTimeout(redlog("onfocus"),100)} ;
-lambda.onblur      = script_1    = function(){ setTimeout(redlog("onblur" ),100)} ;
-// lambda.onfocusout  = script_2    = function(){ setTimeout(redlog("onfocusout"),100)} ;
-
 redlog("sync","Hello App");
 
-recordstack=document.getElementById("name")
-body=document.getElementsByTagName("body")[0]
-x=appendBlankRecord();
+{/*event*/
+  list=document.querySelectorAll(".field.scroll .words");
+  lambda=list[0];	
+    
+  lambda.onfocus     = script_0    = function(){ setTimeout(redlog("onfocus"),100)} ;
+  lambda.onblur      = script_1    = function(){ setTimeout(redlog("onblur" ),100)} ;
+  // lambda.onfocusout  = script_2    = function(){ setTimeout(redlog("onfocusout"),100)} ;
+}/**/
+
+{/*taggen*/
+  // body=document.getElementsByTagName("body")[0]
+  recordstack=document.getElementById("phone") ; 
+  x=appendBlankRecord();
+  recordstack.append(x);
+}/**/
