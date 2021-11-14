@@ -51,7 +51,7 @@ function newrecord(icon,label){
     +       `</div><!-- field fixed -->`
     +       `<div class="field timestamp">`
     +           `<div class="icon">X</div>`
-    +           `<div class="words">[2021-11-08 23:30 MST]</div>`
+    +           `<div class="words">${contacttimestamp()}</div>`
     +           `<div class="idol">⭯</div>`
     +       `</div><!-- field timestamp -->`
     +   `</div><!-- anterior -->`
@@ -74,10 +74,10 @@ function newpaunch(symbol){
 function newfieldstack(symbol){
   return htmltotag(`<div class="field-stack"></div>`);
 }
-glob1=undefined;glob2=undefined;
+
 function appendBlankRecord(stackID){
   stackID=stackID.toLowerCase();
-  let [icon,car] = {
+  let [icon,arr] = {
      "name"    : ["♣"     , ["F","M","L","S" ]              ]
     ,"phone"   : ["☎"    , ["L","N"         ]              ]
     ,"email"   : ["ⓔ"     , ["L","E"         ]              ]
@@ -86,12 +86,10 @@ function appendBlankRecord(stackID){
     ,"link"    : ["🔗"    , ["L","U"         ]              ]
     ,"group"   : ["👪"    , ["G"             ]              ]
   }[stackID];
-  let recordstack = document.getElementById(stackID) ; glob=recordstack;
+  let recordstack = document.getElementById(stackID) ;
   let lambda      = newrecord(icon,stackID.toUpperCase());
   redlog("append",icon);
-  redlog("append",car);
-  // arr=["F","M","L","S" ];
-  let arr  = car        ;
+  redlog("append",arr);
   let head = lambda     ;
   let phi  = undefined  ;
   arr.forEach( (c) =>{
@@ -115,24 +113,25 @@ function appendBlankRecord(stackID){
           head.append( newfield(c));
       }
     });
-  let  post=glob.querySelector(".posterior")
-  if(! post){      
-    recordstack.appendChild(lambda);
-  }
-  else{
-    post.before(lambda);
-  }
+  let  post  =recordstack.querySelector(".posterior")
+  if(! post){ recordstack.appendChild(lambda); }
+  else{       post.before(lambda);             }
   return lambda;
 }
 
 redlog("sync","Hello App");
 
-{/*eventsandbox/
+{/*eventsandbox*/
   list=document.querySelectorAll(".field.scroll .words");
   lambda=list[0];	
-    
+  
+  script_3 = function(){ setTimeout(redlog("out","3"),100)} ;
+  function script_4(){   setTimeout(redlog("out","4"),100)} ;
   lambda.onfocus     = script_0    = function(){ setTimeout(redlog("onfocus"),100)} ;
   lambda.onblur      = script_1    = function(){ setTimeout(redlog("onblur" ),100)} ;
+  lambda.addEventListener( 'focusout' , script_3 );
+  lambda.addEventListener( 'focusout' , script_4 );
+  lambda.addEventListener( 'focusout' , script_4 );
   // lambda.onfocusout  = script_2    = function(){ setTimeout(redlog("onfocusout"),100)} ;
-}/**/
+}/*eventsandbox*/
 
