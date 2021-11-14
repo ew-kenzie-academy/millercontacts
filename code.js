@@ -67,25 +67,51 @@ function newfield(symbol){
     + `</div><!-- field scroll -->`)
 }
 
+function newpauch(symbol){
+  return htmltotag(`<div class="paunch"></div><!-- paunch -->`);
+}
+
+function newfieldstack(symbol){
+  return htmltotag(`<div class="field-stack"></div>`);
+}
+
 function appendBlankRecord(stackID){
+  stackID=stackID.toUpperCase();
   let [icon,label] = {
-     "name"    : ["♣",  "NAME"    ] // ["F","M","L","S" ]
-    ,"phone"   : ["☎", "PHONE"   ] // ["L","N"         ]
-    ,"email"   : ["ⓔ",  "EMAIL"   ] // ["L","E"         ]
-    ,"address" : ["⌂",  "ADDRESS" ] // ["A","+","C","P","+","S","D" ]
-    ,"note"    : ["λ",  "NOTE"    ] // ["N"             ]
-    ,"link"    : ["🔗", "LINK"    ] // ["L","U"         ]
-    ,"group"   : ["👪", "GROUP"   ] // ["G"             ]
+     "name"    : ["♣",      ] // ["F","M","L","S" ]
+    ,"phone"   : ["☎",    ] // ["L","N"         ]
+    ,"email"   : ["ⓔ",     ] // ["L","E"         ]
+    ,"address" : ["⌂",   ] // ["A","^","C","P","+","S","D" ]
+    ,"note"    : ["λ",      ] // ["N"             ]
+    ,"link"    : ["🔗",     ] // ["L","U"         ]
+    ,"group"   : ["👪",    ] // ["G"             ]
   }[stackID];
   let recordstack=document.getElementById(stackID) ; 
   let lambda=newrecord(icon,label);
   recordstack.appendChild(lambda);
+  
   arr=["F","M","L","S" ];
-  arr.forEach( (i) => {
-      let mu=newfield(i);
-      lambda.append( mu );
-      
-    })
+  head = lambda;
+  phi=undefined;
+  arr.forEach( (c) =>{
+      if(c==="^"){
+        phi=newpaunch(c);
+        head=newfieldstack();
+        phi.append(head)
+      }
+      else if(c==="+"){
+        phi=head.parentElement();
+        head=newfieldstack();
+        phi.append(head);
+      }
+      else if(c==="-"){
+        head = lambda;
+        phi=undefined;
+      }
+      else{
+          head.append( newfield(c));
+      }
+    });
   return lambda;
 }
 
