@@ -67,41 +67,43 @@ function newfield(symbol){
     + `</div><!-- field scroll -->`)
 }
 
-function newpauch(symbol){
+function newpaunch(symbol){
   return htmltotag(`<div class="paunch"></div><!-- paunch -->`);
 }
 
 function newfieldstack(symbol){
   return htmltotag(`<div class="field-stack"></div>`);
 }
-
+glob1=undefined;glob2=undefined;
 function appendBlankRecord(stackID){
-  stackID=stackID.toUpperCase();
-  let [icon,label] = {
-     "name"    : ["♣",      ] // ["F","M","L","S" ]
-    ,"phone"   : ["☎",    ] // ["L","N"         ]
-    ,"email"   : ["ⓔ",     ] // ["L","E"         ]
-    ,"address" : ["⌂",   ] // ["A","^","C","P","+","S","D" ]
-    ,"note"    : ["λ",      ] // ["N"             ]
-    ,"link"    : ["🔗",     ] // ["L","U"         ]
-    ,"group"   : ["👪",    ] // ["G"             ]
+  stackID=stackID.toLowerCase();
+  let [icon,car] = {
+     "name"    : ["♣"     , ["F","M","L","S" ]              ]
+    ,"phone"   : ["☎"    , ["L","N"         ]              ]
+    ,"email"   : ["ⓔ"     , ["L","E"         ]              ]
+    ,"address" : ["⌂"     , ["A","^","C","P","+","S","D"]   ]
+    ,"note"    : ["λ"     , ["N"             ]              ]
+    ,"link"    : ["🔗"    , ["L","U"         ]              ]
+    ,"group"   : ["👪"    , ["G"             ]              ]
   }[stackID];
-  let recordstack=document.getElementById(stackID) ; 
-  let lambda=newrecord(icon,label);
-  recordstack.appendChild(lambda);
-  
-  arr=["F","M","L","S" ];
-  head = lambda;
-  phi=undefined;
+  let recordstack = document.getElementById(stackID) ; glob=recordstack;
+  let lambda      = newrecord(icon,stackID.toUpperCase());
+  redlog("append",icon);
+  redlog("append",car);
+  // arr=["F","M","L","S" ];
+  let arr  = car        ;
+  let head = lambda     ;
+  let phi  = undefined  ;
   arr.forEach( (c) =>{
       if(c==="^"){
-        phi=newpaunch(c);
-        head=newfieldstack();
-        phi.append(head)
+        phi   = newpaunch(c);
+        head  = newfieldstack();
+        phi.append(head);
+        lambda.append(phi);
       }
       else if(c==="+"){
-        phi=head.parentElement();
-        head=newfieldstack();
+        phi   = head.parentElement;
+        head  = newfieldstack();
         phi.append(head);
       }
       else if(c==="-"){
@@ -109,15 +111,23 @@ function appendBlankRecord(stackID){
         phi=undefined;
       }
       else{
+          redlog("append->else",c);
           head.append( newfield(c));
       }
     });
+  let  post=glob.querySelector(".posterior")
+  if(! post){      
+    recordstack.appendChild(lambda);
+  }
+  else{
+    post.before(lambda);
+  }
   return lambda;
 }
 
 redlog("sync","Hello App");
 
-{/*event*/
+{/*eventsandbox/
   list=document.querySelectorAll(".field.scroll .words");
   lambda=list[0];	
     
@@ -126,9 +136,3 @@ redlog("sync","Hello App");
   // lambda.onfocusout  = script_2    = function(){ setTimeout(redlog("onfocusout"),100)} ;
 }/**/
 
-{/*taggen*/
-  // body=document.getElementsByTagName("body")[0]
-
-  // x=appendBlankRecord("phone");
-  // recordstack.append(x);
-}/**/
