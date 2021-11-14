@@ -166,12 +166,20 @@ redlog("sync","Hello App");
 }/*eventsandbox*/
 
 {/*eventsandbox*/
-  phonepost=document.querySelector("#phone .posterior");
+/*   phonepost=document.querySelector("#phone .posterior");
   phonepost.onclick=function(e){
     redlog("phonepost.onclick","start");
     let post   = e.target;
     let parent = post.closest(".record-stack");
     appendBlankRecord(parent.id);
-  };
+  }; */
 }/*eventsandbox*/
-
+{/*eventsandbox*/
+  postonclick=function(e){
+    redlog("phonepost.onclick","start");
+    let post   = e.target;
+    let parent = post.closest(".record-stack");
+    appendBlankRecord(parent.id);
+  };
+  document.querySelectorAll(".posterior").forEach(lambda => lambda.onclick=postonclick )
+}/*eventsandbox*/
