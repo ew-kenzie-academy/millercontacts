@@ -23,15 +23,6 @@ const redlog=function(thread,obj){
   console.log(message);
 }
 
-list=document.querySelectorAll(".field.scroll .words");
-lambda=list[0];	
-  
-lambda.onfocus     = script_0    = function(){ setTimeout(redlog("onfocus"),100)} ;
-lambda.onblur      = script_1    = function(){ setTimeout(redlog("onblur" ),100)} ;
-// lambda.onfocusout  = script_2    = function(){ setTimeout(redlog("onfocusout"),100)} ;
-
-redlog("async","Hello App");
-
 contacttimestamp=function(){
   /**
   @return Current date is something ISO-8601
@@ -44,9 +35,15 @@ contacttimestamp=function(){
         + `:${lambda.getMinutes().toString().padStart(2,"0")} ${TZ}]`
 }
 
+function htmltotag(html){
+  lambda=document.createElement('div');
+  lambda.innerHTML=html;
+  return lambda.firstChild;
+}
+
 function appendBlankRecord(appID){
-  lambda=document.createElement(`div`);
-  lambda.innerHTML=``
+  // lambda=document.createElement(`div`);
+  lambda = htmltotag(``
     + `<div class="record">`
     +   `<div class="anterior">`
     +       `<div class="field fixed">`
@@ -60,9 +57,21 @@ function appendBlankRecord(appID){
     +       `</div><!-- field timestamp -->`
     +   `</div><!-- anterior -->`
     + `</div><!-- "record" -->`
+  )
     // lambda.textContent="<td>text</td>"
-    return lambda.firstChild;
+    // return lambda.firstChild;
+    return lambda;
 }
+
+list=document.querySelectorAll(".field.scroll .words");
+lambda=list[0];	
+  
+lambda.onfocus     = script_0    = function(){ setTimeout(redlog("onfocus"),100)} ;
+lambda.onblur      = script_1    = function(){ setTimeout(redlog("onblur" ),100)} ;
+// lambda.onfocusout  = script_2    = function(){ setTimeout(redlog("onfocusout"),100)} ;
+
+redlog("sync","Hello App");
+
 recordstack=document.getElementById("name")
 body=document.getElementsByTagName("body")[0]
 x=appendBlankRecord();
