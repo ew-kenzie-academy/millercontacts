@@ -125,14 +125,12 @@ redlog("sync","Hello App");
   list=document.querySelectorAll(".field.scroll .words");
   lambda=list[0];	
   
-  script_3 = function(){ redlog("out","3") } ;
-  function script_4(){   redlog("out","4") } ;
+  script_3 = function(){ redlog("focusout::script_3","3") } ;
+  function script_4(){   redlog("focusout::script_4","4") } ;
   glob5=undefined;function script_5(e){   
-    setTimeout(redlog("out","5"),100);
+    redlog("focusout::script_5",""),100;
     glob5=e;
   };
-  // lambda.onfocus     = script_0    = function(){ setTimeout(redlog("onfocus"),100)} ;
-  // lambda.onfocus     = script_0    = function(){ setTimeout(redlog("onfocus"),100)} ;
   script_0 = function(e){
     redlog("script_0","starting 0")        ;
     let words  = e.target                  ;
@@ -141,21 +139,26 @@ redlog("sync","Hello App");
     words.__instate=[words.innerHTML,twords.innerHTML];
     redlog("script_0","done: " + words.instate)        ;
   }
+  lambda.onfocus     = script_0;
   glob6=undefined;lambda.onblur      = script_6    = function(e){
+    glob6=e;
     redlog("onblur::script_6","start");
     let words  = e.target;
     let parent = words.closest(".record");
     let twords = parent.querySelector(".timestamp .words");
     let curr   = words.innerHTML;
     redlog("onblur::script_6","state: "+words.__instate);
-    if(curr === words.__instate[0])
-      redlog("onblur::script_6",`equal: [${words.__instate}] is: [${curr}]`);
-    else
+    if(curr === words.__instate[0]){
+      redlog("onblur::script_6",`the same: [${words.__instate}] is: [${curr}]`);
+      words.__instate=undefined;
+    }
+    else{
       redlog("onblur::script_6",`changed: [${words.__instate}] is: [${curr}]`);
-    glob6=e;
+      twords.innerHTML=contacttimestamp();
+      glob6=parent.querySelector(".idol");// .visibility="visible";
+      parent.querySelector(".idol").style.visibility="visible";
+    }
   } ;
-  lambda.onfocus     = script_0;
-  // lambda.onblur      = script_1    = function(){ redlog("onblur::script_1" )} ;
   lambda.addEventListener( 'focusout' , script_3 );
   lambda.addEventListener( 'focusout' , script_4 );
   lambda.addEventListener( 'focusout' , script_4 );
