@@ -23,13 +23,44 @@ const redlog=function(thread,obj){
   console.log(message);
 }
 
-// function script_0(){ setTimeout(redlog(0),200); }
-function script_1(){ setTimeout(redlog(1),200); }
-
 list=document.querySelectorAll(".field.scroll .words");
 lambda=list[0];	
   
-lambda.onfocus  = script_0 = function(){ setTimeout(redlog(0),200)} ;
-lambda.onblur   = script_1;
+lambda.onfocus     = script_0    = function(){ setTimeout(redlog("onfocus"),100)} ;
+lambda.onblur      = script_1    = function(){ setTimeout(redlog("onblur" ),100)} ;
+// lambda.onfocusout  = script_2    = function(){ setTimeout(redlog("onfocusout"),100)} ;
 
-console.log("Hello");
+redlog("async","Hello App");
+
+contacttimestamp=function(){
+  /**
+  @return Current date is something ISO-8601
+  @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
+  */
+  let lambda =new Date();
+  let TZ     = lambda.toLocaleTimeString([],{timeZoneName:'short'}).split(" ").pop();
+  return  `[${lambda.getFullYear()}-${lambda.getMonth() + 1}-${lambda.getDate()}`
+        + ` ${lambda.getHours().toString().padStart(2,"0")}`
+        + `:${lambda.getMinutes().toString().padStart(2,"0")} ${TZ}]`
+}
+
+function appendBlankRecord(appID){
+  lambda=document.createElement(`template`);
+/*   lambda.innerHTMl=``
+    + `<div class="record">`
+    +   `<div class="anterior">`
+    +       `<div class="field fixed">`
+    +           `<div class="icon">♣</div>`
+    +           `<div class="words">NAME</div>`
+    +       `</div><!-- field fixed -->`
+    +       `<div class="field timestamp">`
+    +           `<div class="icon">X</div>`
+    +           `<div class="words">[2021-11-08 23:30 MST]</div>`
+    +           `<div class="idol">⭯</div>`
+    +       `</div><!-- field timestamp -->`
+    +   `</div><!-- anterior -->`
+    + `</div><!-- "record" -->` */
+    lambda.textContent="<td>text</td>"
+    return lambda;
+}
+x=appendBlankRecord();
