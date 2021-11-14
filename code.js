@@ -165,3 +165,13 @@ redlog("sync","Hello App");
   lambda.addEventListener( 'focusout' , script_5 );
 }/*eventsandbox*/
 
+{/*eventsandbox*/
+  phonepost=document.querySelector("#phone .posterior");
+  phonepost.onclick=function(e){
+    redlog("phonepost.onclick","start");
+    let post   = e.target;
+    let parent = post.closest(".record-stack");
+    appendBlankRecord(parent.id);
+  };
+}/*eventsandbox*/
+
