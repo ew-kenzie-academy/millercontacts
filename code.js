@@ -20,7 +20,7 @@ const redlog=function(thread,obj){
             + `(${lambda.getSeconds()}.${lambda.getMilliseconds()})]`
   }
   const message=`:contacts: (${thread}) ${redtimestamp()}`+`> {${obj}}`;
-  console.log(message);
+  setTimeout(console.log(message),100);
 }
 
 contacttimestamp=function(){
@@ -125,8 +125,8 @@ redlog("sync","Hello App");
   list=document.querySelectorAll(".field.scroll .words");
   lambda=list[0];	
   
-  script_3 = function(){ setTimeout(redlog("out","3"),100)} ;
-  function script_4(){   setTimeout(redlog("out","4"),100)} ;
+  script_3 = function(){ redlog("out","3") } ;
+  function script_4(){   redlog("out","4") } ;
   glob5=undefined;function script_5(e){   
     setTimeout(redlog("out","5"),100);
     glob5=e;
@@ -134,22 +134,28 @@ redlog("sync","Hello App");
   // lambda.onfocus     = script_0    = function(){ setTimeout(redlog("onfocus"),100)} ;
   // lambda.onfocus     = script_0    = function(){ setTimeout(redlog("onfocus"),100)} ;
   script_0 = function(e){
-    setTimeout(redlog("script_0","starting 0"),100)        ;
-    let words  = e.explicitOriginalTarget                  ;
+    redlog("script_0","starting 0")        ;
+    let words  = e.target                  ;
     let parent = words.closest(".record")                  ;
     let twords = parent.querySelector(".timestamp .words") ;
-    words.__instate=words.innerHTML;
+    words.__instate=[words.innerHTML,twords.innerHTML];
+    redlog("script_0","done: " + words.instate)        ;
   }
-  lambda.onfocus     = script_0;
-  lambda.onblur      = script_1    = function(){ setTimeout(redlog("onblur" ),100)} ;
   glob6=undefined;lambda.onblur      = script_6    = function(e){
-    setTimeout(redlog("onblur" ),100);
-    let words  = e.explicitOriginalTarget;
+    redlog("onblur::script_6","start");
+    let words  = e.target;
     let parent = words.closest(".record");
     let twords = parent.querySelector(".timestamp .words");
     let curr   = words.innerHTML;
-    glob6=words;
+    redlog("onblur::script_6","state: "+words.__instate);
+    if(curr === words.__instate[0])
+      redlog("onblur::script_6",`equal: [${words.__instate}] is: [${curr}]`);
+    else
+      redlog("onblur::script_6",`changed: [${words.__instate}] is: [${curr}]`);
+    glob6=e;
   } ;
+  lambda.onfocus     = script_0;
+  // lambda.onblur      = script_1    = function(){ redlog("onblur::script_1" )} ;
   lambda.addEventListener( 'focusout' , script_3 );
   lambda.addEventListener( 'focusout' , script_4 );
   lambda.addEventListener( 'focusout' , script_4 );
