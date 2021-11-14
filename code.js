@@ -36,18 +36,18 @@ contacttimestamp=function(){
 }
 
 function htmltotag(html){
-  lambda=document.createElement('div');
+  let lambda=document.createElement('div');
   lambda.innerHTML=html;
   return lambda.firstChild;
 }
 
-function newrecord(symbol){
+function newrecord(icon,label){
   return htmltotag(``
     + `<div class="record">`
     +   `<div class="anterior">`
     +       `<div class="field fixed">`
-    +           `<div class="icon">♣</div>`
-    +           `<div class="words">NAME</div>`
+    +           `<div class="icon">  ${icon}  </div>`
+    +           `<div class="words"> ${label} </div>`
     +       `</div><!-- field fixed -->`
     +       `<div class="field timestamp">`
     +           `<div class="icon">X</div>`
@@ -58,6 +58,7 @@ function newrecord(symbol){
     + `</div><!-- "record" -->`
   )
 }
+
 function newfield(symbol){
   return htmltotag(``
     + `<div class="field scroll">`
@@ -68,32 +69,24 @@ function newfield(symbol){
 
 function appendBlankRecord(stackID){
   let [icon,label] = {
-     "name"    : ["♣",  "NAME"    ]
-    ,"phone"   : ["☎", "PHONE"   ]
-    ,"email"   : ["ⓔ",  "EMAIL"   ]
-    ,"address" : ["⌂",  "ADDRESS" ]
-    ,"note"    : ["λ",  "NOTE"    ]
-    ,"link"    : ["🔗", "LINK"    ]
-    ,"group"   : ["👪", "GROUP"   ]
+     "name"    : ["♣",  "NAME"    ] // ["F","M","L","S" ]
+    ,"phone"   : ["☎", "PHONE"   ] // ["L","N"         ]
+    ,"email"   : ["ⓔ",  "EMAIL"   ] // ["L","E"         ]
+    ,"address" : ["⌂",  "ADDRESS" ] // ["A","+","C","P","+","S","D" ]
+    ,"note"    : ["λ",  "NOTE"    ] // ["N"             ]
+    ,"link"    : ["🔗", "LINK"    ] // ["L","U"         ]
+    ,"group"   : ["👪", "GROUP"   ] // ["G"             ]
   }[stackID];
-  lambda = htmltotag(``
-    + `<div class="record">`
-    +   `<div class="anterior">`
-    +       `<div class="field fixed">`
-    +           `<div class="icon">♣</div>`
-    +           `<div class="words">NAME</div>`
-    +       `</div><!-- field fixed -->`
-    +       `<div class="field timestamp">`
-    +           `<div class="icon">X</div>`
-    +           `<div class="words">[2021-11-08 23:30 MST]</div>`
-    +           `<div class="idol">⭯</div>`
-    +       `</div><!-- field timestamp -->`
-    +   `</div><!-- anterior -->`
-    + `</div><!-- "record" -->`
-  )
-    // lambda.textContent="<td>text</td>"
-    // return lambda.firstChild;
-    return lambda;
+  let recordstack=document.getElementById(stackID) ; 
+  let lambda=newrecord(icon,label);
+  recordstack.appendChild(lambda);
+  arr=["F","M","L","S" ];
+  arr.forEach( (i) => {
+      let mu=newfield(i);
+      lambda.append( mu );
+      
+    })
+  return lambda;
 }
 
 redlog("sync","Hello App");
@@ -109,7 +102,7 @@ redlog("sync","Hello App");
 
 {/*taggen*/
   // body=document.getElementsByTagName("body")[0]
-  recordstack=document.getElementById("phone") ; 
-  x=appendBlankRecord();
-  recordstack.append(x);
+
+  // x=appendBlankRecord("phone");
+  // recordstack.append(x);
 }/**/
