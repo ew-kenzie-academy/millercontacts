@@ -175,11 +175,22 @@ redlog("sync","Hello App");
   }; */
 }/*eventsandbox*/
 {/*eventsandbox*/
-  postonclick=function(e){
-    redlog("phonepost.onclick","start");
+  const postonclick=function(e){
     let post   = e.target;
     let parent = post.closest(".record-stack");
+    redlog("postonclick",parent.id);
     appendBlankRecord(parent.id);
   };
   document.querySelectorAll(".posterior").forEach(lambda => lambda.onclick=postonclick )
+}/*eventsandbox*/
+{/*eventsandbox*/
+  glob=undefined;
+  const deleteonclick=function(e){
+    let rmbut   = e.target;
+    let parent  = rmbut.closest(".record");
+    redlog("deleteonclick","got: "+parent.querySelector(".timestamp .words").innerHTML);
+    // glob=parent;
+    parent.remove(parent);
+  };
+  document.querySelectorAll(".timestamp .icon").forEach(lambda => lambda.onclick=deleteonclick )
 }/*eventsandbox*/
