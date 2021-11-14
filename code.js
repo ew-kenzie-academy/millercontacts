@@ -122,8 +122,6 @@ function appendBlankRecord(stackID){
 redlog("sync","Hello App");
 
 {/*eventsandbox*/
-  list=document.querySelectorAll(".field.scroll .words");
-  lambda=list[0];	
   
   const wordsenter = function(e){
     redlog("wordsenter","starting 0")        ;
@@ -134,7 +132,6 @@ redlog("sync","Hello App");
       words.__instate=[words.textContent,twords.textContent]   ;
     redlog("wordsenter","done: " + words.instate)            ;
   }
-  lambda.onfocus     = wordsenter;
   
   const wordsexit = function(e){
     redlog("onblur::wordsexit","start");
@@ -153,18 +150,11 @@ redlog("sync","Hello App");
       parent.querySelector(".idol").style.visibility="visible";
     }
   } ;
-  lambda.onblur     = wordsexit;
-  
-/*   script_3 = function(){ redlog("focusout::script_3","3") } ;
-  function script_4(){   redlog("focusout::script_4","4") } ;
-  glob5=undefined;function script_5(e){   
-    redlog("focusout::script_5",""),100;
-    glob5=e;
-  };
-  lambda.addEventListener( 'focusout' , script_3 );
-  lambda.addEventListener( 'focusout' , script_4 );
-  lambda.addEventListener( 'focusout' , script_4 );
-  lambda.addEventListener( 'focusout' , script_5 ); */
+ 
+  list=document.querySelectorAll(".field.scroll .words");
+  lambda=list[0];	
+  lambda.onfocus     = wordsenter;
+  lambda.onblur      = wordsexit;
 }/*eventsandbox*/
 {/*eventsandbox*/
   const postonclick=function(e){
