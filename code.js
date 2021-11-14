@@ -127,11 +127,32 @@ redlog("sync","Hello App");
   
   script_3 = function(){ setTimeout(redlog("out","3"),100)} ;
   function script_4(){   setTimeout(redlog("out","4"),100)} ;
-  lambda.onfocus     = script_0    = function(){ setTimeout(redlog("onfocus"),100)} ;
+  glob5=undefined;function script_5(e){   
+    setTimeout(redlog("out","5"),100);
+    glob5=e;
+  };
+  // lambda.onfocus     = script_0    = function(){ setTimeout(redlog("onfocus"),100)} ;
+  // lambda.onfocus     = script_0    = function(){ setTimeout(redlog("onfocus"),100)} ;
+  script_0 = function(e){
+    setTimeout(redlog("script_0","starting 0"),100)        ;
+    let words  = e.explicitOriginalTarget                  ;
+    let parent = words.closest(".record")                  ;
+    let twords = parent.querySelector(".timestamp .words") ;
+    words.__instate=words.innerHTML;
+  }
+  lambda.onfocus     = script_0;
   lambda.onblur      = script_1    = function(){ setTimeout(redlog("onblur" ),100)} ;
+  glob6=undefined;lambda.onblur      = script_6    = function(e){
+    setTimeout(redlog("onblur" ),100);
+    let words  = e.explicitOriginalTarget;
+    let parent = words.closest(".record");
+    let twords = parent.querySelector(".timestamp .words");
+    let curr   = words.innerHTML;
+    glob6=words;
+  } ;
   lambda.addEventListener( 'focusout' , script_3 );
   lambda.addEventListener( 'focusout' , script_4 );
   lambda.addEventListener( 'focusout' , script_4 );
-  // lambda.onfocusout  = script_2    = function(){ setTimeout(redlog("onfocusout"),100)} ;
+  lambda.addEventListener( 'focusout' , script_5 );
 }/*eventsandbox*/
 
